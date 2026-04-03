@@ -144,8 +144,17 @@ button:active {
 .filters {
     padding: 10px;
     background-color: rgb(230, 239, 248);
+    display: flex;
+    gap: 15px;
     box-shadow: 4px 1px 8px 1px rgb(116 172 245 / 26%);
+    user-select: none;
 }
+
+.filter.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
 
 .todos-container {
     padding-top: 20px;

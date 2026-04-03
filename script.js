@@ -6,6 +6,25 @@ const numTasks = document.getElementById("tasks");
 const newBtn = document.getElementById('new-btn');
 const addBtn = document.getElementById("add-btn");
 const clearCompleted = document.getElementById("clear-completed");
+const filters = document.querySelectorAll(".filter");
+
+let currentFilter = "All";
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+printTodo();
+updateClock();
+setInterval(updateClock, 1000);
+
+filters.forEach(filter => {
+    filter.addEventListener("click", () => {
+        currentFilter = filter.dataset.filter;
+        filters.forEach(element => {
+            element.classList.remove("active");
+        });
+        filter.classList.add("active");
+        printTodo();
+    })
+})
 
 newBtn.addEventListener("click", () => {
     newTask.classList.add('active');
@@ -19,11 +38,9 @@ clearCompleted.addEventListener("click", () => {
     clearCompletedTasks();
 });
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-printTodo();
 
-updateClock();
-setInterval(updateClock, 1000);
+
+
 
 function saveTask() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -47,9 +64,17 @@ function addTask(text) {
 }
 
 function printTodo() {
-    numTasks.textContent = `${tasks.filter(task => !task.completed).length} Tasks`;
+    filtredTasks = tasks;
+
+    if (currentFilter === 'Active') {
+        filtredTasks = tasks.filter(todo => !todo.completed);
+    } else if (currentFilter === 'Completed') {
+        filtredTasks = tasks.filter(todo => todo.completed);
+    }
+    numTasks.textContent = `${filtredTasks.filter(todo => !todo.completed).length} Tasks`;
+
     todoList.innerHTML = "";
-    tasks.forEach(todo => {
+    filtredTasks.forEach(todo => {
 
         const todoItem = document.createElement("li");
 
