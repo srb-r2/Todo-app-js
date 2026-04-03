@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo app</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Todo app</h1>
+            <div class="info-header">
+                <p id="date">date et heure</p>
+                <button id="new-btn"> new task</button>
+            </div>
+        </header>
+        <div class="new-task">
+            <div class="task-box">
+                <h2>what's new</h2>
+                <label for="task-input">describe your task</label>
+                <input type="text" id="task-input" placeholder="here...">
+                <button id="add-btn">add Task</button>
+            </div>
+        </div>
+        <div class="filters">
+            <span>All</span>
+        </div>
+        <div class="todos-container">
+            <ul id="todo-list">
+            </ul>
+        </div>
+        <footer>
+            <span id="tasks">0 Task</span>
+            <button id="clear-completed">Clear completed</button>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,261 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,regular,500,600,700);
+
+:root {
+    --primary: rgb(0, 64, 137);
+    --primary-light: rgb(192, 214, 230);
+    --dark: #212529;
+    --light: #f8f9fa;
+    --gray: #868e96;
+    --border: #e9ecef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    max-height: 100vh;
+    background-color: var(--primary-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: quicksand;
+}
+
+.app-container {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 25px;
+    height: 95vh;
+    overflow: hidden;
+
+}
+
+header {
+    padding: 15px;
+    background-color: var(--primary);
+}
+
+header h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+#date {
+    color: var(--light);
+    letter-spacing: 2px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: quicksand;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+button:hover {
+    transform: translateY(-4px);
+
+}
+
+button:active {
+    transform: translateY(0);
+    border: 2px solid rgb(45, 136, 255);
+}
+
+#new-btn {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.new-task {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100vh;
+    background-color: rgba(41, 97, 186, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+
+}
+
+.new-task.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90%;
+    max-width: 500px;
+    color: var(--primary);
+}
+
+.task-box h2 {
+    font-size: 1.9rem;
+}
+
+#task-input {
+    padding: 15px;
+    border: 1px solid #e6ebf0;
+    border-radius: 15px;
+}
+
+#task-input:focus {
+    border-color: rgb(45, 136, 255);
+}
+
+
+#add-btn {
+    align-self: flex-end;
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.filters {
+    padding: 10px;
+    background-color: rgb(230, 239, 248);
+    box-shadow: 4px 1px 8px 1px rgb(116 172 245 / 26%);
+}
+
+.todos-container {
+    padding-top: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#todo-list {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    transition: all 0.2s ease;
+
+}
+
+li:hover {
+    background-color: rgb(230, 239, 248);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    opacity: 0;
+    transition: all0.2s;
+}
+
+li:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    color: rgb(255, 0, 0);
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing: 2px;
+    color: #333;
+}
+
+.task-checkbox {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #c6dcf4;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.task-checkbox:checked {
+    background-color: #007BFF;
+}
+
+.task-checkbox::before {
+    content: "✔";
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.task-checkbox:checked::before {
+    opacity: 1;
+}
+
+.task-checkbox:checked+.task-text {
+    text-decoration: line-through;
+    color: #a0a0a0;
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+#tasks {
+    margin-left: 10px;
+    color: var(--gray);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+#clear-completed {
+    font-size: 0.8rem;
+    width: fit-content;
+}
