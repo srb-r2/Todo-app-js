@@ -64,7 +64,6 @@ function addTask(text) {
 }
 
 function printTodo() {
-    numTasks.textContent = `${tasks.filter(todo => !todo.completed).length} Tasks`;
     filtredTasks = tasks;
 
     if (currentFilter === 'Active') {
@@ -72,7 +71,7 @@ function printTodo() {
     } else if (currentFilter === 'Completed') {
         filtredTasks = tasks.filter(todo => todo.completed);
     }
-    console.log(filtredTasks);
+    numTasks.textContent = `${filtredTasks.filter(todo => !todo.completed).length} Tasks`;
 
     todoList.innerHTML = "";
     filtredTasks.forEach(todo => {
