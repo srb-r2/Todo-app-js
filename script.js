@@ -99,6 +99,7 @@ function printTodo() {
         taskContainer.appendChild(checkbox);
         taskContainer.appendChild(taskText);
 
+
         const deleteBtn = document.createElement("i");
         deleteBtn.classList.add("fas");
         deleteBtn.classList.add("fa-times");

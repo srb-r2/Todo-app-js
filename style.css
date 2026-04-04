@@ -206,7 +206,7 @@ li {
 }
 
 li:hover {
-    background-color: var(--primary);
+    background-color: var(--primary-light);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
