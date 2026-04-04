@@ -10,7 +10,7 @@ const filters = document.querySelectorAll(".filter");
 const darkMode = document.getElementById("dark-mode");
 
 let currentFilter = "All";
-let mode = false;
+let mode;
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 printTodo();
@@ -106,7 +106,7 @@ function printTodo() {
         editBtn.classList.add("fa-regular");
         editBtn.classList.add("fa-pen-to-square");
         editBtn.classList.add("edit-btn")
-        editBtn.addEventListener("click", () => editTodo(todo.id));
+        editBtn.addEventListener("click", () => editTodo(todo, taskContainer, taskText));
         const deleteBtn = document.createElement("i");
         deleteBtn.classList.add("fas");
         deleteBtn.classList.add("fa-times");
@@ -153,7 +153,32 @@ function changeMode() {
 
 }
 
-function editTodo() { }
+function editTodo(todo, taskContainer, taskText) {
+
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.value = todo.text;
+    editInput.classList.add("edit-input");
+    taskContainer.replaceChild(editInput, taskText);
+    editInput.focus();
+
+    editInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            updateTodoText(todo, editInput.value)
+        }
+    });
+
+    editInput.addEventListener("blur", () => {
+        updateTodoText(todo, editInput.value);
+    });
+}
+
+function updateTodoText(todo, text) {
+
+    todo.text = text;
+    saveTask();
+
+}
 
 function updateClock() {
     const now = new Date();
