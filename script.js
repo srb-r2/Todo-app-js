@@ -7,8 +7,10 @@ const newBtn = document.getElementById('new-btn');
 const addBtn = document.getElementById("add-btn");
 const clearCompleted = document.getElementById("clear-completed");
 const filters = document.querySelectorAll(".filter");
+const darkMode = document.getElementById("dark-mode");
 
 let currentFilter = "All";
+let mode = false;
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 printTodo();
@@ -26,6 +28,7 @@ filters.forEach(filter => {
     })
 })
 
+
 newBtn.addEventListener("click", () => {
     newTask.classList.add('active');
 });
@@ -37,6 +40,8 @@ addBtn.addEventListener("click", () => {
 clearCompleted.addEventListener("click", () => {
     clearCompletedTasks();
 });
+
+darkMode.addEventListener("click", changeMode)
 
 
 
@@ -94,6 +99,7 @@ function printTodo() {
         taskContainer.appendChild(checkbox);
         taskContainer.appendChild(taskText);
 
+
         const deleteBtn = document.createElement("i");
         deleteBtn.classList.add("fas");
         deleteBtn.classList.add("fa-times");
@@ -124,6 +130,21 @@ function clearCompletedTasks() {
     tasks = tasks.filter((todo) => !todo.completed)
     saveTask();
 }
+
+
+function changeMode() {
+    if (!mode) {
+        darkMode.innerHTML = `<i class="fa-regular fa-sun"></i>`;
+        mode = true;
+    } else {
+        darkMode.innerHTML = `<i class="fa-regular fa-moon"></i>`;
+        mode = false;
+    }
+    document.body.classList.toggle("dark");
+
+}
+
+
 
 function updateClock() {
     const now = new Date();

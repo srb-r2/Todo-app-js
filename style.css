@@ -3,11 +3,20 @@
 :root {
     --primary: rgb(0, 64, 137);
     --primary-light: rgb(192, 214, 230);
-    --dark: #212529;
-    --light: #f8f9fa;
+    --second-light: aliceblue;
+    --dark: #042d55;
+    --light: rgb(230, 239, 248);
     --gray: #868e96;
     --border: #e9ecef;
 }
+
+body.dark {
+    --primary: rgb(9, 96, 196);
+    --primary-light: #082b55;
+    --second-light: #022f65;
+    --dark: rgb(230, 239, 248);
+}
+
 
 * {
     margin: 0;
@@ -26,7 +35,7 @@ body {
 }
 
 .app-container {
-    background-color: aliceblue;
+    background-color: var(--second-light);
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -47,6 +56,21 @@ header h1 {
     color: white;
     font-size: 2.5rem;
     font-weight: 400;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#dark-mode {
+    position: absolute;
+    right: 0;
+    width: fit-content;
+    background-color: rgba(13, 84, 164, 0.674);
+    color: var(--primary-light);
 }
 
 .info-header {
@@ -143,7 +167,7 @@ button:active {
 
 .filters {
     padding: 10px;
-    background-color: rgb(230, 239, 248);
+    background-color: var(--primary);
     display: flex;
     gap: 15px;
     box-shadow: 4px 1px 8px 1px rgb(116 172 245 / 26%);
@@ -151,8 +175,8 @@ button:active {
 }
 
 .filter.active {
-    color: var(--primary);
-    font-weight: 600;
+    color: var(--second-light);
+    font-weight: 700;
 }
 
 
@@ -182,7 +206,7 @@ li {
 }
 
 li:hover {
-    background-color: rgb(230, 239, 248);
+    background-color: var(--primary-light);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
@@ -211,7 +235,8 @@ li:hover .delete-btn {
     cursor: pointer;
     font-size: 17px;
     letter-spacing: 2px;
-    color: #333;
+    font-weight: 600;
+    color: var(--dark);
 }
 
 .task-checkbox {
@@ -228,7 +253,7 @@ li:hover .delete-btn {
 }
 
 .task-checkbox:checked {
-    background-color: #007BFF;
+    background-color: var(--primary);
 }
 
 .task-checkbox::before {
@@ -267,4 +292,6 @@ footer {
 #clear-completed {
     font-size: 0.8rem;
     width: fit-content;
+    background-color: var(--primary-light);
+    color: var(--primary);
 }
