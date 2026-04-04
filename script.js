@@ -99,15 +99,24 @@ function printTodo() {
         taskContainer.appendChild(checkbox);
         taskContainer.appendChild(taskText);
 
+        const buttonDiv = document.createElement("div")
+        buttonDiv.classList.add("button-div");
 
+        const editBtn = document.createElement("i");
+        editBtn.classList.add("fa-regular");
+        editBtn.classList.add("fa-pen-to-square");
+        editBtn.classList.add("edit-btn")
+        editBtn.addEventListener("click", () => editTodo(todo.id));
         const deleteBtn = document.createElement("i");
         deleteBtn.classList.add("fas");
         deleteBtn.classList.add("fa-times");
         deleteBtn.classList.add("delete-btn")
         deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
 
+        buttonDiv.appendChild(editBtn);
+        buttonDiv.appendChild(deleteBtn);
         todoItem.appendChild(taskContainer);
-        todoItem.appendChild(deleteBtn);
+        todoItem.appendChild(buttonDiv);
         todoList.appendChild(todoItem);
 
     });
@@ -144,7 +153,7 @@ function changeMode() {
 
 }
 
-
+function editTodo() { }
 
 function updateClock() {
     const now = new Date();

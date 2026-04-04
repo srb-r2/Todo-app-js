@@ -210,7 +210,13 @@ li:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.delete-btn {
+.edit-btn {
+    align-self: flex-end;
+    background-color: #87a2c3;
+}
+
+.delete-btn,
+.edit-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -218,13 +224,16 @@ li:hover {
     user-select: none;
     opacity: 0;
     transition: all0.2s;
+    margin-right: 8px;
 }
 
-li:hover .delete-btn {
+li:hover .delete-btn,
+li:hover .edit-btn {
     opacity: 1;
 }
 
-.delete-btn:hover {
+.delete-btn:hover,
+.edit-btn:hover {
     color: rgb(255, 0, 0);
 }
 
